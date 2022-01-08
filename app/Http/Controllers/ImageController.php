@@ -34,7 +34,7 @@ class ImageController extends Controller
 
         exec('rembg -o '.'./images/'.$name.'.png ./upload/'.$upload,$out, $retval);
         
-        File::delete('./upload/'.$upload);
+        // File::delete('./upload/'.$upload);
         if (!empty($retval)) {
             $response = [
                 'success'   => false,

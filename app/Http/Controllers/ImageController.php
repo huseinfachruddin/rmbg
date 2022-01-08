@@ -29,7 +29,8 @@ class ImageController extends Controller
 
         $compress->resize(500, null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save(public_path('/upload').'/'.$upload);
+        });
+        $compress->save(public_path('/upload').'/'.$upload);
 
         exec('rembg -o '.'./images/'.$name.'.png ./upload/'.$upload,$out, $retval);
         

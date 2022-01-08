@@ -45,7 +45,7 @@ class ImageController extends Controller
         // }
         $response = [
             'success'   => true,
-            'image'      => url('/').'/images/'.$name.'.png'
+            'image'      => url('/').'/images/'.$name.'.png',
             'data'=>[$out,$retval]
         ];
 

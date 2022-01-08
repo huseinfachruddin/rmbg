@@ -32,25 +32,20 @@ class ImageController extends Controller
         });
         $compress->save(public_path('/upload').'/'.$upload);
 
-        exec('whoami', $output, $retval);
-
-        if(function_exists('exec')){
-            $data= 'Function exists';
-         }else{
-            $data = 'Function does not exists';
-         }
+        exec('rembg -o '.'./images/'.$name.'.png ./upload/'.$upload,$out, $retval);
+        
         // File::delete('./upload/'.$upload);
-        // if (!empty($retval)) {
-        //     $response = [
-        //         'success'   => false,
-        //         'errors'      => [$out,$retval],
-        //     ];
-        //     return response($response,402); 
-        // }
+        if (!empty($retval)) {
+            $response = [
+                'success'   => false,
+                'errors'      => [$out,$retval],
+                'data'=> 'rembg -o '.'./images/'.$name.'.png ./upload/'.$upload
+            ];
+            return response($response,402); 
+        }
         $response = [
             'success'   => true,
-            'image'      => url('/').'/images/'.$name.'.png',
-            'data'=>$output
+            'image'      => url('/').'/images/'.$name.'.png'
         ];
 
         return response($response,200); 

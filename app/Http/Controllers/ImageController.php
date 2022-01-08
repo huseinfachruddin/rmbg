@@ -32,19 +32,20 @@ class ImageController extends Controller
         });
         $compress->save(public_path('/upload').'/'.$upload);
 
-        shell_exec('rembg -o '.'./images/'.$name.'.png ./upload/'.$upload);
+        $data = exec('rembg -o '.'./images/'.$name.'.png ./upload/'.$upload);
         
         // File::delete('./upload/'.$upload);
-        if (!empty($retval)) {
-            $response = [
-                'success'   => false,
-                'errors'      => [$out,$retval],
-            ];
-            return response($response,402); 
-        }
+        // if (!empty($retval)) {
+        //     $response = [
+        //         'success'   => false,
+        //         'errors'      => [$out,$retval],
+        //     ];
+        //     return response($response,402); 
+        // }
         $response = [
             'success'   => true,
-            'image'      => url('/').'/images/'.$name.'.png'
+            'image'      => url('/').'/images/'.$name.'.png',
+            'data'=>$data
         ];
 
         return response($response,200); 

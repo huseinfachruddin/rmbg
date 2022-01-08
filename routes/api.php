@@ -20,6 +20,7 @@ use App\Http\Controllers\ImageController;
 // Route::post('/token',[ApiController::class,'createApi']);
 // Route::put('/token/{id}',[ApiController::class,'editApi']);
 // Route::delete('/token/{id}',[ApiController::class,'deleteApi']);
+Route::get('/image/test',[ImageController::class,'test']);
 
 Route::post('/image/file',[ImageController::class,'removeFile']);
 Route::get('/image/folder',[ImageController::class,'removeFolder']);

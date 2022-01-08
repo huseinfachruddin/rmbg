@@ -26,7 +26,7 @@ class ImageController extends Controller
         
         $upload = $name.'.'.$image->getClientOriginalExtension();
         $compress = Image::make($image->getRealPath());
-
+        
         $compress->resize(500, null, function ($constraint) {
             $constraint->aspectRatio();
         });

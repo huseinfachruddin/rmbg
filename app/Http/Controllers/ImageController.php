@@ -54,11 +54,13 @@ class ImageController extends Controller
             'name' => 'nullable',
             'content' => 'required|url',
         ]);
-        $name = $request->input('name',Str::random(10));
-        $image = $request->file('content');
+        if (empty($request->name)){
+            $name = Str::random(10);
+        }else{
+            $name = $request->input('name',Str::random(10));
+        }
         
-        $url = "http://www.google.co.in/intl/en_com/images/srpr/logo1w.png";
-        $data = file_get_contents($url);
+        $data = file_get_contents($request->content);
 
         Storage::disk('public')->put($name.'.jpg', $data);
 

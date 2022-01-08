@@ -26,7 +26,7 @@ class ImageController extends Controller
         
         $upload = $name.'.'.$image->getClientOriginalExtension();
         $compress = Image::make($image->getRealPath());
-        
+
         $compress->resize(500, null, function ($constraint) {
             $constraint->aspectRatio();
         });
@@ -37,7 +37,7 @@ class ImageController extends Controller
         File::delete('./upload/'.$upload);
         if (!empty($retval)) {
             $response = [
-                'success'   => true,
+                'success'   => false,
                 'errors'      => [$out,$retval],
             ];
             return response($response,402); 
@@ -69,7 +69,7 @@ class ImageController extends Controller
 
         if (!empty($retval)) {
             $response = [
-                'success'   => true,
+                'success'   => false,
                 'errors'      => [$out,$retval],
             ];
             return response($response,402); 

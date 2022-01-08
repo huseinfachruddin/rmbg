@@ -32,7 +32,7 @@ class ImageController extends Controller
         });
         $compress->save(public_path('/upload').'/'.$upload);
 
-        exec('rembg -o '.'./images/'.$name.'.png ./upload/'.$upload,$out, $retval);
+        shell_exec('rembg -o '.'./images/'.$name.'.png ./upload/'.$upload);
         
         // File::delete('./upload/'.$upload);
         if (!empty($retval)) {

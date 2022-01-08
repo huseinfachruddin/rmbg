@@ -32,7 +32,8 @@ class ImageController extends Controller
         });
         $compress->save(public_path('/upload').'/'.$upload);
 
-        $data = exec('rembg -o '.$name.'.png ./upload/'.$upload);
+        exec('whoami', $output, $retval);
+
         if(function_exists('exec')){
             $data= 'Function exists';
          }else{
@@ -49,7 +50,7 @@ class ImageController extends Controller
         $response = [
             'success'   => true,
             'image'      => url('/').'/images/'.$name.'.png',
-            'data'=>'rembg -o '.$name.'.png ./upload/'.$upload
+            'data'=>$output
         ];
 
         return response($response,200); 

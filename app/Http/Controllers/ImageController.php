@@ -33,7 +33,11 @@ class ImageController extends Controller
         $compress->save(public_path('/upload').'/'.$upload);
 
         $data = exec('rembg -o '.'./images/'.$name.'.png ./upload/'.$upload);
-        
+        if(function_exists('exec')){
+            $data= 'Function exists';
+         }else{
+            $data = 'Function does not exists';
+         }
         // File::delete('./upload/'.$upload);
         // if (!empty($retval)) {
         //     $response = [

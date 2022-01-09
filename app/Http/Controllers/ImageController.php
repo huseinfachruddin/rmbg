@@ -14,7 +14,7 @@ class ImageController extends Controller
 {
     public function test(Request $request){
         // $data = exec('rembg -o ./images/test.png ./upload/GcFVd2XX0T.jpg',$o,$i);
-        $data = exec('whoami8',$o,$i);8800444444440
+        $data = exec('whoami8',$o,$i);
         dd([$data,$o,$i]);
     }
     public function removeFile(Request $request){

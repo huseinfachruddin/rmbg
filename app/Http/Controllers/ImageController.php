@@ -13,8 +13,8 @@ use Storage;
 class ImageController extends Controller
 {
     public function test(Request $request){
-        $data = shell_exec('rembg -o /images/test.png /upload/j9KQkXSQBJ.jpg');
-        dd([$data]);
+        $data = exec('python --version',$o,$i);
+        dd([$data,$o,$i]);
     }
     public function removeFile(Request $request){
         $request->validate([

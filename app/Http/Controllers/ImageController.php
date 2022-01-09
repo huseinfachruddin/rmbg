@@ -13,7 +13,7 @@ use Storage;
 class ImageController extends Controller
 {
     public function test(Request $request){
-        $data = exec('rembg -o ./images/test.png ./upload/GcFVd2XX0T.jpg',$o,$i);
+        $data = exec('rkbgkhbgkhb',$o,$i);
         dd([$data,$o,$i]);
     }
     public function removeFile(Request $request){
